@@ -48,7 +48,7 @@ const app = express();
 const PORT = process.env.PORT || 4000; // Use environment variable for port
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost/soccerDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://hina1299:AMblessed1299@cluster0.y6pblqg.mongodb.net/?appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Database connected'))
   .catch(err => {
     console.error('Database connection error:', err);
