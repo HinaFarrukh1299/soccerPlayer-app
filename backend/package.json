@@ -4,7 +4,8 @@
   "description": "capstone1299",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec npx babel-node ./index.js"
+    
+    "start": "babel-node index.js"
   },
   "keywords": [
     "mern"
@@ -17,6 +18,7 @@
     "@babel/preset-env": "^7.25.4"
   },
   "dependencies": {
+    "@babel/node": "^7.28.0",
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
