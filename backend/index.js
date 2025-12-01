@@ -38,7 +38,8 @@ app.get('/',(req,res) =>
 app.listen(PORT, () =>
 console.log(`your soccer server is running on port ${PORT}`)
 ); */
-import express from 'express';
+/*import express from 'express';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import routes from './routes/soccerRoutes';
@@ -47,8 +48,54 @@ import axios from 'axios'
 const app = express();
 const PORT = process.env.PORT || 4000; // Use environment variable for port
 
+dotenv.config();
+
 // MongoDB connection
-mongoose.connect('mongodb+srv://hina1299:AMblessed1299@cluster0.y6pblqg.mongodb.net/?appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
+//mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Database connected'))
+  .catch(err => {
+    console.error('Database connection error:', err);
+    process.exit(1);  // Exit if DB connection fails
+  });
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+// Pass the routes to app
+routes(app);
+
+app.get('/', (req, res) => 
+  res.send(`Our application is running on port ${PORT}`)
+);
+
+app.listen(PORT, () =>
+  console.log(`Your soccer server is running on port ${PORT}`)
+); */
+
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import routes from './routes/soccerRoutes';
+import axios from 'axios';
+
+// Load environment variables as early as possible
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 4000; // Use environment variable for port
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('Database connected'))
   .catch(err => {
     console.error('Database connection error:', err);
@@ -70,3 +117,4 @@ app.get('/', (req, res) =>
 app.listen(PORT, () =>
   console.log(`Your soccer server is running on port ${PORT}`)
 );
+
