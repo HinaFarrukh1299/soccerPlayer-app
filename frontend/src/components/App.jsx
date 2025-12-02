@@ -17,7 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost:4000/getPlayer';
+    //const url = 'http://localhost:4000/getPlayer';
+    const url = "https://soccerplayer-application-backend.onrender.com/"
     axios.get(url)
       .then((response) => {
         this.setState({ players: response.data });
