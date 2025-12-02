@@ -88,9 +88,9 @@ without manually refreshing the page*/
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import PlayerForm from './player/playerForm.jsx';
-import PlayerList from './player/playerList.jsx';
-import PlayerSingle from './player/playerSingle.jsx';
+import PlayerForm from './player/PlayerForm.jsx';
+import PlayerList from './player/PlayerList.jsx';
+import PlayerSingle from './player/PlayerSingle.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -119,7 +119,8 @@ class App extends React.Component {
   }
 
   loadPlayers = () => {
-    const url = 'http://localhost:4000/getPlayer';
+    //const url = 'http://localhost:4000/getPlayer';
+    const url = "https://soccerplayer-application-backend.onrender.com/getPlayer"
 
     axios.get(url)
       .then((response) => {
