@@ -2,9 +2,9 @@
 /*import React from 'react';
 import axios from 'axios';
 import './App.css';
-import PlayerForm from './player/playerForm.jsx';
-import PlayerList from './player/playerList.jsx';
-import PlayerSingle from './player/playerSingle.jsx';
+import PlayerForm from './Player/playerForm.jsx';
+import PlayerList from './Player/playerList.jsx';
+import PlayerSingle from './Player/playerSingle.jsx';
 
 class App extends React.Component {
   constructor(props) {
