@@ -117,6 +117,19 @@ class App extends React.Component {
     // 🧹 Clean up when component unmounts
     clearInterval(this.refreshInterval);
   }
+  deletePlayer = async (id) => {
+    try {
+      await axios.delete(`https://soccerplayer-application-backend.onrender.com/player/${id}`);
+      this.setState((prevState) => ({
+        players: prevState.players.filter(player => player._id !== id),
+        currentPlayer: prevState.currentPlayer?._id === id ? null : prevState.currentPlayer
+      }));
+      alert('Player deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting player:', error);
+      alert('Failed to delete player.');
+    }
+  };
 
   loadPlayers = () => {
     //const url = 'http://localhost:4000/getPlayer';
@@ -160,7 +173,10 @@ class App extends React.Component {
 
           <div className='col s4'>
             {currentPlayer ? (
-              <PlayerSingle player={currentPlayer} />
+               <PlayerSingle 
+                      player={currentPlayer} 
+                      deletePlayer={this.deletePlayer} // Pass the function here
+    />
             ) : (
               <p>Select a player to view details.</p>
             )}

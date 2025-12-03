@@ -191,7 +191,7 @@ const PlayerSingle = (props) => {
 export default PlayerSingle; */
 import React from 'react';
 
-const PlayerSingle = ({player}) => {
+const PlayerSingle = ({player,deletePlayer}) => {
     // If no player is provided, show a fallback message
     if (!player) {
         return (
@@ -216,10 +216,21 @@ const PlayerSingle = ({player}) => {
                     <div className="card-content">
                         <p>Phone: {player.phone} | Email: {player.email}</p>
                         <p>Strength: {player.strength} | Endurance: {player.endurance}</p>
+                        <p>Status: {player.isCoach ? 'Coach' : 'Player'}</p>
                     </div>
                     <div className="card-action">
                         <p>Team: {player.team || "Not Assigned"}</p>
                     </div>
+                     <button
+                            className="btn red"
+                            onClick={() => {
+                                if (window.confirm(`Are you sure you want to delete ${player.firstName}?`)) {
+                                    deletePlayer(player._id);
+                                }
+                            }}
+                        >
+                            Delete Player
+                        </button>
                 </div>
             </div>
         </div>

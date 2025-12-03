@@ -136,6 +136,9 @@ class PlayerForm extends React.Component {
         this.lastNameRef = React.createRef();
         this.phoneRef = React.createRef();
         this.emailRef = React.createRef();
+        this.strengthRef = React.createRef();
+        this.isCoachRef = React.createRef();
+
         
         this.submitPlayer = this.submitPlayer.bind(this); // Bind the method
     }
@@ -165,11 +168,13 @@ class PlayerForm extends React.Component {
             event.preventDefault();
         
             try {
-                const response = await axios.post('https://soccerplayer-application-backend.onrender.com//players', {
+                const response = await axios.post('https://soccerplayer-application-backend.onrender.com/players', {
                     firstName: this.firstNameRef.current.value,
                     lastName: this.lastNameRef.current.value,
                     phone: this.phoneRef.current.value,
                     email: this.emailRef.current.value,
+                    strength: this.strengthRef.current.value,
+                    isCoach : this.isCoachRef.current.checked
                 });
                 console.log('Player added:', response.data);
                 // Reset form fields
@@ -177,6 +182,8 @@ class PlayerForm extends React.Component {
                 this.lastNameRef.current.value = '';
                 this.phoneRef.current.value = '';
                 this.emailRef.current.value = '';
+                this.strengthRef.current.value= '';
+                this.isCoachRef.current.value = false;
             } catch (error) {
                 if (error.response) {
                     console.error('Error response:', error.response.data);
@@ -213,6 +220,16 @@ class PlayerForm extends React.Component {
                         <div className='input-field col s6'>
                             <input id='email' ref={this.emailRef} type='email' required />
                             <label htmlFor='email'>Email</label>
+                        </div>
+                         <div className='input-field col s6'>
+                            <input id='strength' ref={this.strengthRef} type='number' required min='1' max='3' />
+                            <label htmlFor='strength'> strength 1-3</label>
+                        </div>
+                          <div className="col s6" style={{ marginTop: "25px" }}>
+                            <label>
+                                <input type="checkbox" ref={this.isCoachRef} />
+                                <span>Coach</span>
+                            </label>
                         </div>
                     </div>
                     <button className='btn waves-effect waves-light' type='submit' name='action'>Add Player</button>

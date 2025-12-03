@@ -96,7 +96,7 @@ const PlayerList = (props) => {
                             key={player._id || player.id} // Ensure a unique key exists
                             onClick={() => props.updateCurrentPlayer(player)} // Use arrow function
                         >
-                            {player.firstName} {player.lastName}
+                            {player.firstName} {player.lastName} <span style={{color: 'darkgrey'}}> {player.isCoach && "Coach" }</span>
                         </a>
                     ))
                 ) : (

@@ -32,7 +32,7 @@ export const playerSchema = new Schema({
     },
     strength : {
         type : Number ,
-        enum : [1,2,3]
+        default : 1
     },
     endurance : {
         type : Number ,
