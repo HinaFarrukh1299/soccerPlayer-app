@@ -7,6 +7,7 @@
 }
 .row{
     z-index: 0;
+    background-color: transparent;
 }
 .card-image{
     z-index: 10;
