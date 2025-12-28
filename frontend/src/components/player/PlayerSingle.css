@@ -5,6 +5,9 @@
     height: fit-content;
    
 }
+.row{
+    z-index: 0;
+}
 .card-image{
     z-index: 10;
 }
