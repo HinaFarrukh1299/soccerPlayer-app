@@ -190,6 +190,7 @@ const PlayerSingle = (props) => {
 
 export default PlayerSingle; */
 import React from 'react';
+import './PlayerSingle.css';
 
 const PlayerSingle = ({player,deletePlayer}) => {
     // If no player is provided, show a fallback message
