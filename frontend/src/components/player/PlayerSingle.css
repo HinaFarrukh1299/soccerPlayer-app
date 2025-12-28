@@ -1,15 +1,6 @@
+/* Let Materialize control layout */
 .card {
-  position: relative;
   width: 100%;
-}
-
-.row {
-  position: relative;
-  overflow: visible;
-}
-
-.card-image {
-  position: relative;
 }
 
 .card-image img {
@@ -17,10 +8,10 @@
   display: block;
 }
 
+/* Prevent mobile overlap bug */
 .card-content,
 .card-action {
-  position: relative;
-  z-index: 2;
-  background: white;
+  position: static;
 }
+
 
