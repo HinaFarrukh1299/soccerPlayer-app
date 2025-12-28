@@ -5,3 +5,6 @@
     height: fit-content;
    
 }
+.card-image{
+    z-index: 10;
+}
